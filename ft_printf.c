@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:03 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/13 18:58:01 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:52:36 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_printf(const char *data, ... )
 {
-	int i;
+	int len;
 
-	i = 0;
+	len = 0;
 	va_list arg;
 
 	va_start (arg, data);
@@ -26,4 +26,5 @@ int	ft_printf(const char *data, ... )
 
 	}
 	va_end(arg);
+	return(len);
 }

@@ -12,12 +12,13 @@
 
 #include"ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, *len)
 {
 	write(1, &c, 1);
+	*count ++;
 }
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(int nb , int *len)
 {
     if ( nb == -2147483648)
 	{
