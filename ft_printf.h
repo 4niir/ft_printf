@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:12 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/14 19:52:38 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:40:54 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 #include<stdlib.h>
 #include<stdarg.h>
+#include<unistd.h>
+#include<stdio.h>
 
-int	ft_printf(char *s, ... );
+int		ft_printf(const char *s, ... );
+void	ft_putchar(int c, int *len);
+void	ft_putstr(char *str, int *len);
+void	ft_putnbr(int nb , int *len);
+
 
 #endif
