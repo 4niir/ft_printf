@@ -53,4 +53,3 @@ void	ft_putnbr(int nb , int *len)
 		ft_putnbr(nb % 10, len);
 	}
 }
-
