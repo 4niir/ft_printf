@@ -6,11 +6,16 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:03 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/15 18:49:37 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/16 15:44:00 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
+#include<stdlib.h>
+#include<stdarg.h>
+#include<unistd.h>
+#include<stdio.h>
+
 
 int	ft_printf(const char *data, ... )
 {
@@ -36,17 +41,30 @@ int	ft_printf(const char *data, ... )
 		 		ft_putnbr(va_arg(args, int), &len);
 			else if(data[position] == 's')
 				ft_putstr(va_arg(args, char *), &len);
+			else if(data[position] == 'd')
+		 		ft_putnbr(va_arg(args, int), &len);
+			else if(data[position] == 'i')
+		 		ft_putnbr(va_arg(args, int), &len);
+			else if(data[position] == 'u')
+		 		ft_putnbr(va_arg(args, unsigned int), &len);
+			else if(data[position] == '%')
+		 		ft_putchar('%', &len);
 		}
 		position++;
 	}
-	va_end(args);
+	va_end(args); 
 	return(len);
 }
 
+/*
 int main()
 {
-	int a = -2147483648;
-	//char b = 'b';
-	//char *str="thisuduhfu";
-	ft_printf("%d", a);
+	 int a = -2147483648;
+	 char b = 'b';
+	 char *str = NULL;
+	 ft_printf("%d\n%c\n%s\n", a, b, str);
+	 printf("printf :\n %d\n  %c\n%s\n", a, b, str);
+	printf("%s", NULL);
+	ft_printf("%s", NULL);
 }
+*/

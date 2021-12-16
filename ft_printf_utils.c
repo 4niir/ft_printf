@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:51 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/15 18:39:49 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:53:46 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	ft_putstr(char *str, int *len)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr("(null)", len);
+		return ;
+	}
 	while (str[i])
 	{
 		ft_putchar(str[i], len);
@@ -30,15 +35,9 @@ void	ft_putstr(char *str, int *len)
 	}
 }
 
-void	ft_putnbr(int nb , int *len)
-{
-    if ( nb == -2147483648)
-	{
-	   write(1, "-2147483648", 11);
-	   *len = 11;
-		return ;
-    }
-	else if (nb < 0)
+void	ft_putnbr(long nb , int *len)
+{	
+	if (nb < 0)
 	{
 		ft_putchar('-', len);
 		ft_putnbr(-nb, len);
@@ -52,4 +51,9 @@ void	ft_putnbr(int nb , int *len)
 		ft_putnbr(nb / 10, len);
 		ft_putnbr(nb % 10, len);
 	}
+}
+
+void	ft_hexa (const char dada, unsigned long nb, int *)
+{
+	
 }
