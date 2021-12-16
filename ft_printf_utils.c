@@ -53,7 +53,28 @@ void	ft_putnbr(long nb , int *len)
 	}
 }
 
-void	ft_hexa (const char dada, unsigned long nb, int *)
+void	ft_puthex (long nbr, int *len, char flag)
 {
-	
+	unsigned int	i;
+	char *base;
+
+	if(flag == 'x')
+		base = "0123456789abcdef";
+	else 
+		base = "0123456789ABCDEF";
+	if (nbr < 0)
+	{
+		ft_putchar('-', len);
+		nbr	= -nbr;
+	}
+	i = nbr;
+	if (i < 16)
+	{
+		ft_putchar(base[i], len);
+	}
+	else
+	{
+		ft_puthex(i / 16, len, flag);
+		ft_puthex(i % 16, len, flag);
+	}
 }

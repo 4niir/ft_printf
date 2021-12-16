@@ -49,6 +49,8 @@ int	ft_printf(const char *data, ... )
 		 		ft_putnbr(va_arg(args, unsigned int), &len);
 			else if(data[position] == '%')
 		 		ft_putchar('%', &len);
+			else if(data[position] == 'x' || data[position] == 'X')
+				ft_puthex (va_arg(args, unsigned int), &len, data[position]);
 		}
 		position++;
 	}
@@ -56,15 +58,9 @@ int	ft_printf(const char *data, ... )
 	return(len);
 }
 
-/*
+
 int main()
 {
-	 int a = -2147483648;
-	 char b = 'b';
-	 char *str = NULL;
-	 ft_printf("%d\n%c\n%s\n", a, b, str);
-	 printf("printf :\n %d\n  %c\n%s\n", a, b, str);
-	printf("%s", NULL);
-	ft_printf("%s", NULL);
+	ft_printf("%x\n", 1970796);
+	printf("%x\n", 1970796);
 }
-*/

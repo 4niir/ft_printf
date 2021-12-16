@@ -22,6 +22,6 @@ int		ft_printf(const char *s, ... );
 void	ft_putchar(int c, int *len);
 void	ft_putstr(char *str, int *len);
 void	ft_putnbr(long nb , int *len);
-
+void    ft_puthex(long nbr, int *len, char flag);
 
 #endif
