@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:51 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/16 17:53:46 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/17 18:54:37 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,35 @@ void	ft_puthex (long nbr, int *len, char flag)
 	{
 		ft_puthex(i / 16, len, flag);
 		ft_puthex(i % 16, len, flag);
+	}
+}
+
+void ft_putptr(unsigned long long ptr, int *len)
+{
+	char *base;
+	unsigned int i;
+
+	base = "0123456789abcdef";
+	i = ptr;
+	ft_putstr("0x", len);
+	// if (i == 0)
+	// 	ft_putchar('0', len);
+	if (i < 0)
+		i = -i;
+	else 
+	{
+		if (i >= 16)
+		{
+			ft_putptr(i / 16, len);
+			ft_putptr(i % 16, len);
+		}
+		else
+		{
+			ft_putchar(base[i], len);
+			// if (ptr <= 9)
+			// 	ft_putchar((ptr + '0'), len);
+			// else
+			// 	ft_putchar((ptr - 10 + 'a'), len);
+		}
 	}
 }
