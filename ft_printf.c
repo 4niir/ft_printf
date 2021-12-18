@@ -6,54 +6,52 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:03 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/18 14:09:58 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/18 16:49:11 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
-#include<stdlib.h>
-#include<stdarg.h>
-#include<unistd.h>
-#include<stdio.h>
 
-
-int	ft_printf(const char *data, ... )
+void	ft_formats(va_list args, const char format, int *len)
 {
-	int len;
-	int position;
+	if (format == 'c')
+		ft_putchar(va_arg(args, int), len);
+	else if (format == 's')
+		ft_putstr(va_arg(args, char *), len);
+	else if (format == 'd' || format == 'i')
+		ft_putnbr(va_arg(args, int), len);
+	else if (format == 'u')
+		ft_putnbr(va_arg(args, unsigned int), len);
+	else if (format == 'x' || format == 'X')
+		ft_puthex (va_arg(args, unsigned int), len, format);
+	else if (format == 'p')
+		ft_putptr(va_arg(args, unsigned long), len);
+	else if (format == '%')
+		ft_putchar('%', len);
+}
+
+int	ft_printf(const char *data, ...)
+{
+	int		len;
+	int		position;	
+	va_list	args;
 
 	position = 0;
 	len = 0;
-	va_list args;
-
 	va_start(args, data);
-
-	while(data[position])
+	while (data[position])
 	{
-		if(data[position] != '%')
+		if (data[position] != '%')
 			ft_putchar(data[position], &len);
 		else
 		{
 			position++;
-			if(data[position] == 'c')
-				ft_putchar(va_arg(args, int), &len);
-			else if(data[position] == 's')
-				ft_putstr(va_arg(args, char *), &len);
-			else if(data[position] == 'd' || data[position] == 'i')
-		 		ft_putnbr(va_arg(args, int), &len);
-			else if(data[position] == 'u')
-		 		ft_putnbr(va_arg(args, unsigned int), &len);
-			else if(data[position] == 'x' || data[position] == 'X')
-				ft_puthex (va_arg(args, unsigned int), &len, data[position]);
-			else if(data[position] == 'p')
-		 		ft_putptr(va_arg(args, unsigned long), &len);
-			else if(data[position] == '%')
-		 		ft_putchar('%', &len);
-
+			while (data[position] == ' ')
+				position++;
+			ft_formats(args, data[position], &len);
 		}
 		position++;
 	}
-	va_end(args); 
-	return(len);
+	va_end(args);
+	return (len);
 }
-

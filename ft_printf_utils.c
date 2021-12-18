@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:51 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/18 13:53:17 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/18 16:26:43 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putstr(char *str, int *len)
 	}
 }
 
-void	ft_putnbr(long nb , int *len)
+void	ft_putnbr(long nb, int *len)
 {	
 	if (nb < 0)
 	{
@@ -53,24 +53,24 @@ void	ft_putnbr(long nb , int *len)
 	}
 }
 
-void	ft_puthex (unsigned long nbr, int *len, char flag)
+void	ft_puthex(unsigned long nbr, int *len, char format)
 {
-	char *base;
+	char	*base;
 
-	if(flag == 'x')
+	if (format == 'x')
 		base = "0123456789abcdef";
-	else 
+	else
 		base = "0123456789ABCDEF";
 	if (nbr < 16)
 		ft_putchar(base[nbr], len);
 	else
 	{
-		ft_puthex(nbr / 16, len, flag);
-		ft_puthex(nbr % 16, len, flag);
+		ft_puthex(nbr / 16, len, format);
+		ft_puthex(nbr % 16, len, format);
 	}
 }
 
-void ft_putptr(unsigned long ptr, int *len)
+void	ft_putptr(unsigned long ptr, int *len)
 {
 	ft_putstr("0x", len);
 	ft_puthex(ptr, len, 'x');

@@ -6,7 +6,7 @@
 #    By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 15:19:49 by aboudoun          #+#    #+#              #
-#    Updated: 2021/12/18 14:22:08 by aboudoun         ###   ########.fr        #
+#    Updated: 2021/12/18 16:27:30 by aboudoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME) : $(OFILES) $(INC)
 	@ar -rc $(NAME) $(OFILES)
 
 clean:
-	@rm -f $(OFILES) $(OBONUS) *.o
+	@rm -f $(OFILES)
 fclean : clean
 	@rm -f $(NAME)
 re : fclean all
