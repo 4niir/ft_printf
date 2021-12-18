@@ -6,7 +6,7 @@
 #    By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/13 15:19:49 by aboudoun          #+#    #+#              #
-#    Updated: 2021/12/15 18:37:58 by aboudoun         ###   ########.fr        #
+#    Updated: 2021/12/18 14:22:08 by aboudoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ NAME = libftprintf.a
 all : $(NAME)
 
 $(NAME) : $(OFILES) $(INC)
-	$(CC) $(W) $(CFILES)
-	ar -rc $(NAME) $(OFILES)
+	@$(CC) $(W) $(CFILES)
+	@ar -rc $(NAME) $(OFILES)
 
 clean:
 	@rm -f $(OFILES) $(OBONUS) *.o

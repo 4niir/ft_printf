@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:03 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/17 18:35:46 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/18 14:09:58 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	ft_printf(const char *data, ... )
 			position++;
 			if(data[position] == 'c')
 				ft_putchar(va_arg(args, int), &len);
-			else if(data[position] == 'd')
-		 		ft_putnbr(va_arg(args, int), &len);
 			else if(data[position] == 's')
 				ft_putstr(va_arg(args, char *), &len);
 			else if(data[position] == 'd' || data[position] == 'i')
@@ -48,7 +46,7 @@ int	ft_printf(const char *data, ... )
 			else if(data[position] == 'x' || data[position] == 'X')
 				ft_puthex (va_arg(args, unsigned int), &len, data[position]);
 			else if(data[position] == 'p')
-		 		ft_putptr(va_arg(args, unsigned long long), &len);
+		 		ft_putptr(va_arg(args, unsigned long), &len);
 			else if(data[position] == '%')
 		 		ft_putchar('%', &len);
 
@@ -59,9 +57,3 @@ int	ft_printf(const char *data, ... )
 	return(len);
 }
 
-
-// int main()
-// {
-// 	ft_printf("%x%c%%%%%%%%%%d67555  mjk, e\n", 1970796);
-// 	printf("%x%c%%%%%%%%%%d67555  mjk, e\n", 1970796);
-// }
