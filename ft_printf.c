@@ -6,13 +6,13 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:20:03 by aboudoun          #+#    #+#             */
-/*   Updated: 2021/12/19 19:46:04 by aboudoun         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:37:32 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
 
-void	ft_formats(va_list args, const char format, int *len)
+void	ft_formats(va_list args, const char format, int *len, char data)
 {
 	if (format == 'c')
 		ft_putchar(va_arg(args, int), len);
@@ -28,6 +28,8 @@ void	ft_formats(va_list args, const char format, int *len)
 		ft_putptr(va_arg(args, unsigned long), len);
 	else if (format == '%')
 		ft_putchar('%', len);
+	else
+		ft_putchar(data, len);
 }
 
 int	ft_printf(const char *data, ...)
@@ -50,7 +52,7 @@ int	ft_printf(const char *data, ...)
 				position++;
 			if (data[position] == 0)
 				break ;
-			ft_formats(args, data[position], &len);
+			ft_formats(args, data[position], &len, data[position]);
 		}
 		position++;
 	}
